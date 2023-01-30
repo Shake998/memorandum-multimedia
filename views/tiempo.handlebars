@@ -1,0 +1,10 @@
+<h2>Listado de información devuelta por la api </h2>
+{{#if data}}
+  <ul>
+    <li>Provincia: {{data.municipio.NOMBRE_PROVINCIA}}</li>
+    <li>Fecha devuelta: {{data.fecha}}</li>
+    <li>Temperatura actual: {{data.temperatura_actual}}</li>
+    <li>Temperatura Máxima:{{data.temperaturas.max}}Cº</li>
+    <li>Temperatura Mínima:{{data.temperaturas.min}}Cº</li>
+  </ul>
+{{/if}}

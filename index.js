@@ -1,5 +1,11 @@
-const express = require('express'); 
+const express = require('express');
+const request = require("request");
+const exphbs = require("express-handlebars");
 const app = express();
+
+app.engine("handlebars", exphbs.engine());
+app.set("view engine","handlebars");
+
 
 
 // Middleware
@@ -17,7 +23,20 @@ app.get('/', (req, res) => {
    })
 })
 
+app.get('/tiempo', (req, res)=>{
+  request("https://www.el-tiempo.net/api/json/v2/provincias/50/municipios/50297", (err, response, body)=>{
+      if (!err){
+          const data = JSON.parse(body);
+          res.render("tiempo",{ 
+            layout:"main",
+            data: data,
 
+          });
+        } else {
+          console.log('error');
+        }
+  })
+});
 
 
 
